@@ -125,6 +125,6 @@ replay_pid*
 .nfs*
 
 ### JavaFX ###
-.fxbuild
+*.fxbuild
 
 # End of https://www.toptal.com/developers/gitignore/api/java,git,eclipse,linux
