@@ -3,8 +3,12 @@ package application;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 
 public class Main extends Application {
 	public static void main(String[] args) {
@@ -18,23 +22,23 @@ public class Main extends Application {
 		String css = this.getClass().getResource("/application.css").toExternalForm();
 		scene.getStylesheets().add(css);
 		
+		stage.setOnCloseRequest(event -> {
+			event.consume();
+			logout(event, stage);
+		});
 		stage.setScene(scene);
 		stage.show();
 	}
+	
+	public void logout(WindowEvent event, Stage stage) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Logout");
+		alert.setHeaderText("You're about to logout");
+		alert.setContentText("Do you want to save before exiting?: ");
+		
+		if(alert.showAndWait().get() == ButtonType.OK) {
+			System.out.println("You logout");
+			stage.close();
+		}
+	}
 }
-
-/*
- * Image icon = new Image("https://www.shareicon.net/data/2015/09/20/643803_technology_512x512.png");
- * stage.getIcons().add(icon);
- * stage.setTitle("Stage demo-program");
- * stage.setWidth(420);
- * stage.setHeight(420);
- * stage.setResizable(false);
- * stage.setX(50);
- * stage.setY(50);
- * stage.setRenderScaleX(50);
- * stage.setRenderScaleY(50);
- * stage.setFullScreen(true);
- * stage.setFullScreenExitHint("YOU CAN'T ESCAPE unless you press q");
- * stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("q"));
- */
