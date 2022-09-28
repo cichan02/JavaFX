@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <Button layoutX="318.0" layoutY="479.0" mnemonicParsing="false" onAction="#displayImage2" prefHeight="46.0" prefWidth="109.0" text="Button" />
+      <ImageView fx:id="imageView" fitHeight="433.0" fitWidth="681.0" layoutX="32.0" layoutY="24.0" onMouseEntered="#displayImage2" onMouseExited="#displayImage1" pickOnBounds="true">
+         <image>
+            <Image url="@1.jpg" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>
-
