@@ -1,4 +1,4 @@
-package by.piskunou.university.ds.service;
+package by.piskunou.university.ds.services;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,7 +32,8 @@ public class MainService {
 		if(!Files.getFileExtension(file.getName()).equals(extention)) throw new IllegalArgumentException();
 	}
 	
-	public void setProperties(Node node) throws FileNotFoundException, IOException, NullPointerException, IllegalArgumentException {
+	public void setProperties(Node node) throws FileNotFoundException, IOException, NullPointerException,
+												IllegalArgumentException, InterruptedException{
 		FileChooser fileChooser = fileChooserBuilder("Choose properties", HOME_DIR, ".properties");
 		File propFile = fileChooser.showOpenDialog(node.getScene().getWindow());
 			

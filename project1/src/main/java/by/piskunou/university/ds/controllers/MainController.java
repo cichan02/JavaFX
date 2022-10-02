@@ -6,9 +6,8 @@ import javafx.scene.control.Button;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import by.piskunou.university.ds.service.ExceptionService;
-import by.piskunou.university.ds.service.MainService;
-
+import by.piskunou.university.ds.services.ExceptionService;
+import by.piskunou.university.ds.services.MainService;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.TextArea;
@@ -43,8 +42,11 @@ public class MainController {
 			exceptionService.wrongFileExtention("properties");
 		} catch (FileNotFoundException e) {
 			exceptionService.fileNotFound();
+		} catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+			exceptionService.unexpectedException("InterruptedException", e.getMessage());
 		} catch (IOException e) {
-			exceptionService.ioException(e.getMessage());
+			exceptionService.unexpectedException("IOException", e.getMessage());
 		}
 	}
 	
@@ -59,7 +61,7 @@ public class MainController {
 		} catch (FileNotFoundException e) {
 			exceptionService.fileNotFound();
 		} catch (IOException e) {
-			exceptionService.ioException(e.getMessage());
+			exceptionService.unexpectedException("IOException", e.getMessage());
 		}
 	}
 	
@@ -78,7 +80,7 @@ public class MainController {
 		} catch (FileNotFoundException e) {
 			exceptionService.fileNotFound();
 		} catch (IOException e) {
-			exceptionService.ioException(e.getMessage());
+			exceptionService.unexpectedException("IOException", e.getMessage());
 		}
 	}
 	

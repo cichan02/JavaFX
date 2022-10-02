@@ -1,4 +1,4 @@
-package by.piskunou.university.ds.service;
+package by.piskunou.university.ds.services;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -25,9 +25,9 @@ public class ExceptionService {
 		alert.showAndWait();
 	}
 	
-	public void ioException(String message) {
+	public void unexpectedException(String title, String message) {
 		Alert alert = new Alert(AlertType.ERROR);
-		alert.setTitle("IOException");
+		alert.setTitle(title);
 		alert.setContentText(message);
 		alert.showAndWait();
 	}
