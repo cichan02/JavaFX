@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.piskunou.university.ds.controllers.MainController">
+   <children>
+      <Button fx:id="setButton" layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#setProperties" prefHeight="59.0" prefWidth="122.0" text="Set properties">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="saveButton" disable="true" layoutX="441.0" layoutY="14.0" mnemonicParsing="false" onAction="#saveFile" prefHeight="59.0" prefWidth="122.0" text="Save file">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="openButton" disable="true" layoutX="232.0" layoutY="14.0" mnemonicParsing="false" onAction="#openFile" prefHeight="59.0" prefWidth="122.0" text="Open file">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="latinText" disable="true" layoutX="21.0" layoutY="104.0" prefHeight="200.0" prefWidth="543.0" promptText="Open file or type a text" />
+      <TextArea fx:id="cyrillicText" editable="false" layoutX="21.0" layoutY="343.0" prefHeight="200.0" prefWidth="543.0" />
+      <Button fx:id="translateButton" disable="true" layoutX="208.0" layoutY="310.0" mnemonicParsing="false" onAction="#translate" prefHeight="26.0" prefWidth="154.0" text="translate &gt;&gt;">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Button>
+      <Text fx:id="successText" layoutX="23.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="122.39999999999986">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
