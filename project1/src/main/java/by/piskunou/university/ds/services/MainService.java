@@ -11,6 +11,7 @@ import java.util.Properties;
 import com.google.common.io.Files;
 
 import by.piskunou.university.ds.util.Translator;
+
 import javafx.scene.Node;
 import javafx.stage.FileChooser;
 

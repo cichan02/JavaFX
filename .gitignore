@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/java,git,eclipse,linux
-# Edit at https://www.toptal.com/developers/gitignore?templates=java,git,eclipse,linux
+# Created by https://www.toptal.com/developers/gitignore/api/java,git,eclipse,linux,maven
+# Edit at https://www.toptal.com/developers/gitignore?templates=java,git,eclipse,linux,maven
 
 ### Eclipse ###
 .metadata
@@ -13,7 +13,6 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-.classpath
 
 # External tool builders
 .externalToolBuilders/
@@ -124,7 +123,29 @@ replay_pid*
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
-### JavaFX ###
-*.fxbuild
+### Maven ###
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+.mvn/wrapper/maven-wrapper.jar
 
-# End of https://www.toptal.com/developers/gitignore/api/java,git,eclipse,linux
+# Eclipse m2e generated files
+# Eclipse Core
+.project
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+### JavaFX ###
+build.fxbuild
+
+### My ###
+*.properties
+
+# End of https://www.toptal.com/developers/gitignore/api/java,git,eclipse,linux,maven

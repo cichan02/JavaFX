@@ -30,7 +30,7 @@ public class MainController {
 		try {
 			mainService.setProperties(setButton);
 			
-			successText.setText("Ok :)");
+			successText.setText("Success");
 			cyrillicText.setText("");
 			openButton.setDisable(false);
 			latinText.setDisable(false);
