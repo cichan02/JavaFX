@@ -1,6 +1,0 @@
-Java[prim. 1] — strogo tipizirovannyj ob"jektno-orijentirovannyj jazyk
-programmirovanija obscjego naznachjenija, razrabotannyj kompanijej
-Sun Microsystems (v posljedujuscjem priobrjetjonnoj kompanijej Oracle).
-Razrabotka vjediotsja soobscjestvom, organizovannym chjerjez Java Community
-Process; jazyk i osnovnyje rjealizujuscije jego tjehnologii rasprostranjajutsja
-po licjenzii GPL. Prava na torgovuju marku prinadljezhat korporacii Oracle. 
