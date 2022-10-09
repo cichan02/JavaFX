@@ -23,12 +23,12 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="deleteButton" layoutX="389.0" layoutY="203.0" mnemonicParsing="false" onAction="#deletePerson" prefHeight="38.0" prefWidth="110.0" text="Delete: ">
+      <Button fx:id="deleteButton" layoutX="389.0" layoutY="203.0" mnemonicParsing="false" onAction="#deletePerson" prefHeight="38.0" prefWidth="110.0" text="Delete: " wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="editButton" layoutX="389.0" layoutY="120.0" mnemonicParsing="false" onAction="#editPerson" prefHeight="38.0" prefWidth="110.0" text="Edit: ">
+      <Button fx:id="editButton" layoutX="389.0" layoutY="120.0" mnemonicParsing="false" onAction="#editPerson" prefHeight="38.0" prefWidth="110.0" text="Edit: " wrapText="true">
          <font>
             <Font size="14.0" />
          </font>

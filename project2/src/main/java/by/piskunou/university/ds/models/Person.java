@@ -6,20 +6,16 @@ import by.piskunou.university.ds.util.PeopleSequence;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 @Data
 public class Person implements Serializable {
 	private static final long serialVersionUID = 6626431735483299785L;
 	
-	@ToString.Exclude
-	private long id;
-	
+	private long id;	
 	private String firstname;
 	private String surname;
 	
 	@EqualsAndHashCode.Exclude
-	@ToString.Exclude
 	private Address address;
 	
 	private Person(long id, String firstname, String surname, Address address) {
@@ -33,4 +29,11 @@ public class Person implements Serializable {
 		long id = PeopleSequence.getId();
 		return new Person(id, firstname, surname, address);
 	}
+
+	@Override
+	public String toString() {
+		return firstname + " " + surname + " from " + address.getCountry();
+	}
+	
+	
 }

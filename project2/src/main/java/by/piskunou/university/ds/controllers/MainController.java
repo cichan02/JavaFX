@@ -3,7 +3,7 @@ package by.piskunou.university.ds.controllers;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 import by.piskunou.university.ds.models.Person;
@@ -16,9 +16,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
 public class MainController implements Initializable {
 	@FXML private ListView<Person> listView;
@@ -34,6 +36,13 @@ public class MainController implements Initializable {
 	
 	private Person currentPerson;
 	
+	private ChangeListener<Person> changeListener = ((observable, oldValue, newValue) -> {
+		currentPerson = listView.getSelectionModel().getSelectedItem();
+		
+		deleteButton.setText("Delete " + currentPerson);
+		editButton.setText("Edit " + currentPerson);
+	});
+	
 	private void updateListView() {
 		listView.getItems().clear();
 		listView.getItems().addAll(peopleService.findAll());
@@ -42,7 +51,8 @@ public class MainController implements Initializable {
 	@FXML
 	public void openFile (ActionEvent event) {
 		try {
-			List<Person> people = mainService.open(openButton);
+			Collection<? extends Person> people = mainService.open(openButton);
+			peopleService.setAll(people);
 			
 			updateListView();
 		} catch (NullPointerException e) {
@@ -51,7 +61,7 @@ public class MainController implements Initializable {
 			exceptionService.wrongFileExtention("txt");
 		} catch (FileNotFoundException e) {
 			exceptionService.fileNotFound();
-		} catch (IOException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			exceptionService.unexpectedException("IOException", e.getMessage());
 		}
 	}
@@ -59,7 +69,7 @@ public class MainController implements Initializable {
 	@FXML
 	public void saveFile (ActionEvent event) {
 		try {
-			mainService.save(saveButton, listView.getItems());
+			mainService.save(saveButton, peopleService.findAll());
 		} catch (NullPointerException e) {
 			exceptionService.nullFile();
 		} catch (IllegalArgumentException e){
@@ -73,26 +83,42 @@ public class MainController implements Initializable {
 	
 	@FXML
 	public void createPerson (ActionEvent event) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/new.fxml"));
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("/fxml/new.fxml"));
+			Stage stage = (Stage)newButton.getScene().getWindow();
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		} catch (IOException e) {
+			exceptionService.unexpectedException(e.getClass().getSimpleName(), e.getMessage());
+		}
 	}
 	
 	@FXML
 	public void editPerson(ActionEvent event) {
-		
+		try {
+			long id = currentPerson.getId();
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/edit.fxml"));
+			Parent root = loader.load();
+			EditController editController = loader.getController();
+			editController.showPersonById(id);
+			Stage stage = (Stage)editButton.getScene().getWindow();
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+		} catch (NullPointerException e) {
+			exceptionService.nullSelected();
+		} catch (IllegalArgumentException | IOException e) {
+			exceptionService.unexpectedException(e.getClass().getSimpleName(), e.getMessage());
+		}
 	}
 	
 	@FXML
 	public void deletePerson (ActionEvent event) {
-		listView.getItems().remove(currentPerson);
 		peopleService.deleteById(currentPerson.getId());
+		listView.getItems().remove(currentPerson);
 	}
-	
-	ChangeListener<Person> changeListener = ((observable, oldValue, newValue) -> {
-		currentPerson = listView.getSelectionModel().getSelectedItem();
-		
-		deleteButton.setText("Delete " + currentPerson);
-		editButton.setText("Edit " + currentPerson);
-	});
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

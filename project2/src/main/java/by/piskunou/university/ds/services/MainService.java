@@ -1,10 +1,14 @@
 package by.piskunou.university.ds.services;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Collection;
+import java.util.LinkedList;
 
 import com.google.common.io.Files;
 
@@ -29,24 +33,37 @@ public class MainService {
 	}
 	
 	
-	public List<Person> open(Node node) throws FileNotFoundException, IOException,
-											   NullPointerException, IllegalArgumentException {
+	public Collection<Person> open(Node node) throws FileNotFoundException, IOException,
+											   NullPointerException, IllegalArgumentException, ClassNotFoundException {
 		FileChooser fileChooser = fileChooserBuilder("Choose file", HOME_DIR, ".txt");
 		File file = fileChooser.showOpenDialog(node.getScene().getWindow());
 		
 		fileCheck(file, "txt");
 		
-		//past your code		
+		Collection<Person> openedList = new LinkedList<>();
+		try(ObjectInputStream dataIn = new ObjectInputStream(new FileInputStream(file))) {
+			while(dataIn.available() > 0) {
+				Person person = (Person)dataIn.readObject();
+				System.out.println(person);
+				openedList.add(person);
+			}
+		}
 		
-		return Collections.emptyList();
+		return openedList;
 	}
 
-	public void save(Node node, List<Person> people) throws FileNotFoundException, IOException, NullPointerException, IllegalArgumentException {
+	public void save(Node node, Collection <? extends Person> people) throws FileNotFoundException, IOException,
+															NullPointerException, IllegalArgumentException {
 		FileChooser fileChooser = fileChooserBuilder("Choose where to save", HOME_DIR, ".txt");
 		File file = fileChooser.showSaveDialog(node.getScene().getWindow());
 	
 		fileCheck(file, "txt");
 		
-		//past your code
+		try(ObjectOutputStream dataOut = new ObjectOutputStream(new FileOutputStream(file))) {
+			for (Person person : people) {
+				dataOut.writeObject(person);
+				System.out.println(person);
+			}
+		}
 	}
 }

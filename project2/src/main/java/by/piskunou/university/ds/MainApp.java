@@ -8,16 +8,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MainApp extends Application {
+public class MainApp extends Application {	
 	public static void main(String[] args) {
         launch(args);
     }
 
     public void start(Stage stage) throws IOException {
-    	Parent root = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+    	Parent root = loader.load();
     	Scene scene = new Scene(root);
 
-        stage.setTitle("Hello JavaFX and Maven");
+        stage.setTitle("Project 2: Demo");
         stage.setScene(scene);
         stage.show();
     }
