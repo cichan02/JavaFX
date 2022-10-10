@@ -1,6 +1,5 @@
 package by.piskunou.university.ds.dao;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -39,8 +38,12 @@ public class PersonDAO {
 		people.add(newPerson);
 	}
 
-	public void setAll(Collection<? extends Person> newPeople) {
+	public void setAll(List<Person> newPeople) {
 		people.clear();
 		people.addAll(newPeople);
+	}
+
+	public long findByCity(String currentCity) {
+		return people.stream().filter(p -> p.getAddress().getCity().equals(currentCity)).count();
 	}
 }

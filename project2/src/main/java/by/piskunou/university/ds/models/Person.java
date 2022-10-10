@@ -3,11 +3,13 @@ package by.piskunou.university.ds.models;
 import java.io.Serializable;
 
 import by.piskunou.university.ds.util.PeopleSequence;
-
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Person implements Serializable {
 	private static final long serialVersionUID = 6626431735483299785L;
 	
@@ -17,13 +19,6 @@ public class Person implements Serializable {
 	
 	@EqualsAndHashCode.Exclude
 	private Address address;
-	
-	private Person(long id, String firstname, String surname, Address address) {
-		this.id = id;
-		this.firstname = firstname;
-		this.surname = surname;
-		this.address = address;
-	}
 	
 	public static Person of(String firstname, String surname, Address address) {
 		long id = PeopleSequence.getId();

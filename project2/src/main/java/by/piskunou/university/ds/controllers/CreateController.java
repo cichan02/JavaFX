@@ -40,7 +40,10 @@ public class CreateController {
 	
 			peopleService.save(newPerson);
 			
-			Parent root = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+			Parent root = loader.load();
+			MainController controller = loader.getController();
+			controller.updateCityListView();
 			Stage stage = (Stage)createButton.getScene().getWindow();
 			Scene scene = new Scene(root);
 			stage.setScene(scene);

@@ -7,8 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.List;
 
 import com.google.common.io.Files;
 
@@ -33,26 +32,23 @@ public class MainService {
 	}
 	
 	
-	public Collection<Person> open(Node node) throws FileNotFoundException, IOException,
+	@SuppressWarnings("unchecked")
+	public List<Person> open(Node node) throws FileNotFoundException, IOException,
 											   NullPointerException, IllegalArgumentException, ClassNotFoundException {
 		FileChooser fileChooser = fileChooserBuilder("Choose file", HOME_DIR, ".txt");
 		File file = fileChooser.showOpenDialog(node.getScene().getWindow());
 		
 		fileCheck(file, "txt");
 		
-		Collection<Person> openedList = new LinkedList<>();
+		List<Person> openedList = null;
 		try(ObjectInputStream dataIn = new ObjectInputStream(new FileInputStream(file))) {
-			while(dataIn.available() > 0) {
-				Person person = (Person)dataIn.readObject();
-				System.out.println(person);
-				openedList.add(person);
-			}
+			openedList = (List<Person>) dataIn.readObject();
 		}
 		
 		return openedList;
 	}
 
-	public void save(Node node, Collection <? extends Person> people) throws FileNotFoundException, IOException,
+	public void save(Node node, List<Person> people) throws FileNotFoundException, IOException,
 															NullPointerException, IllegalArgumentException {
 		FileChooser fileChooser = fileChooserBuilder("Choose where to save", HOME_DIR, ".txt");
 		File file = fileChooser.showSaveDialog(node.getScene().getWindow());
@@ -60,10 +56,7 @@ public class MainService {
 		fileCheck(file, "txt");
 		
 		try(ObjectOutputStream dataOut = new ObjectOutputStream(new FileOutputStream(file))) {
-			for (Person person : people) {
-				dataOut.writeObject(person);
-				System.out.println(person);
-			}
+			dataOut.writeObject(people);
 		}
 	}
 }
