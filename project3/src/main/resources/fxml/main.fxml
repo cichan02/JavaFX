@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="448.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.piskunou.university.ds.controllers.MainController">
+   <children>
+      <ListView fx:id="listView" layoutX="21.0" layoutY="19.0" prefHeight="195.0" prefWidth="243.0" />
+      <ChoiceBox fx:id="choiceBox" layoutX="286.0" layoutY="19.0" onAction="#updateListView" prefWidth="150.0" />
+      <Button fx:id="createButton" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="286.0" layoutY="161.0" mnemonicParsing="false" onAction="#create" prefHeight="51.0" prefWidth="150.0" text="Create new empty instance" textAlignment="CENTER" wrapText="true" />
+   </children>
 </AnchorPane>

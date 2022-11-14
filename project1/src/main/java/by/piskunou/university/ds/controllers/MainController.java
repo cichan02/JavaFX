@@ -14,6 +14,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 
 public class MainController {
+	private static final String IOE = "IOException";
+	
 	@FXML private Button setButton;
 	@FXML private Button saveButton;
 	@FXML private Button openButton;
@@ -46,7 +48,7 @@ public class MainController {
 			Thread.currentThread().interrupt();
 			exceptionService.unexpectedException("InterruptedException", e.getMessage());
 		} catch (IOException e) {
-			exceptionService.unexpectedException("IOException", e.getMessage());
+			exceptionService.unexpectedException(IOE, e.getMessage());
 		}
 	}
 	
@@ -61,7 +63,7 @@ public class MainController {
 		} catch (FileNotFoundException e) {
 			exceptionService.fileNotFound();
 		} catch (IOException e) {
-			exceptionService.unexpectedException("IOException", e.getMessage());
+			exceptionService.unexpectedException(IOE, e.getMessage());
 		}
 	}
 	
@@ -80,7 +82,7 @@ public class MainController {
 		} catch (FileNotFoundException e) {
 			exceptionService.fileNotFound();
 		} catch (IOException e) {
-			exceptionService.unexpectedException("IOException", e.getMessage());
+			exceptionService.unexpectedException(IOE, e.getMessage());
 		}
 	}
 	

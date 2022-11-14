@@ -16,7 +16,6 @@ public class MainApp extends Application {
     	Parent root = loader.load();
     	Scene scene = new Scene(root);
 
-        stage.setTitle("Project 2: Demo");
         stage.setScene(scene);
         stage.show();
     }

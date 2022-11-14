@@ -13,7 +13,7 @@ public class PersonDAO {
 		people.add(Person.of("Peter", "Bennett", new Address("Great Britain", "West Kristina", "Jacobson Corner", 26)));
 		people.add(Person.of("Gary", "Brooks", new Address("South Africa", "Kennethland", "Steuver Pass", 62)));
 		people.add(Person.of("James", "Fine", new Address("Austria", "Linz", "Hainschwang", 5)));
-		people.add(Person.of("Tom", "Lucky", new Address("Switzerland", "Saint-Gall", "ROwe Keys", 54)));
+		people.add(Person.of("Tom", "Lucky", new Address("Switzerland", "Saint-Gall", "Rowe Keys", 54)));
 	}
 
 	public List<Person> findAll() {
