@@ -2,6 +2,7 @@ package by.piskunou.university.ds.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,6 +12,9 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
+import java.net.URL;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import by.piskunou.university.ds.services.ExceptionService;
 import javafx.scene.control.Label;
@@ -19,14 +23,17 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 
-public class ClassEditController {
+public class ClassEditController implements Initializable {
 	@FXML private Label className;
 	@FXML private ListView<String> fieldList;
 	@FXML private Button changeButton;
 	@FXML private Button backButton;
-	@FXML TextField textArgs;
+	@FXML private TextField textArgs;
+	@FXML private Button langButton;
+	@FXML private Label fieldListLabel;
 	private Object godObject;
 	private String fieldName;
+	private ResourceBundle resources;
 	
 	private final ExceptionService exceptionService = new ExceptionService();
 
@@ -47,7 +54,7 @@ public class ClassEditController {
 					String[] args = arg.split("\\s");
 					yield constructor.newInstance(args[0], args[1], args[2], Integer.parseInt(args[3]));
 				}
-				default -> throw new IllegalArgumentException("Unexpected value: " + fieldType);
+				default -> throw new IllegalArgumentException();
 			};
 			field.set(godObject, value);
 			updateFieldList();
@@ -82,8 +89,21 @@ public class ClassEditController {
 		fieldName = strings[strings.length - 3];
 		
 		changeButton.setDisable(false);
-		changeButton.setText("Change " + fieldName + " value");
+		String[] words = changeButton.getText().split("\\s");
+		changeButton.setText(words[0] + " " + fieldName + " " + words[2]);
 	}
+	
+	@FXML
+	public void changeLanguage() {
+		resources = langButton.getText().equals("EN") ?
+					ResourceBundle.getBundle("words", Locale.US) :
+					ResourceBundle.getBundle("words", Locale.of("be", "BY"));
+		
+		changeButton.setText(resources.getString("changeButtonText"));
+		fieldListLabel.setText(resources.getString("fieldListLabel"));
+		textArgs.setPromptText(resources.getString("promptTextArgs"));
+		langButton.setText(resources.getString("langButtonText"));
+	}	
 
 	public void init(String className) throws ClassNotFoundException, NoSuchMethodException, SecurityException,
 											  InstantiationException, IllegalAccessException, IllegalArgumentException,
@@ -109,5 +129,15 @@ public class ClassEditController {
 			
 			fieldList.getItems().add(string);
 		}
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		this.resources = resources;
+		
+		changeButton.setText(resources.getString("changeButtonText"));
+		fieldListLabel.setText(resources.getString("fieldListLabel"));
+		textArgs.setPromptText(resources.getString("promptTextArgs"));
+		langButton.setText(resources.getString("langButtonText"));
 	}
 }

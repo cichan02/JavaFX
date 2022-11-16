@@ -10,4 +10,11 @@ public class ExceptionService {
 		alert.setHeaderText("Argument should be a number");
 		alert.showAndWait();
 	}
+	
+	public void unexpectedException(String title, String message) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle(title);
+		alert.setContentText(message);
+		alert.showAndWait();
+	}
 }

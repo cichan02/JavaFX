@@ -21,6 +21,7 @@
             <Font size="11.0" />
          </font>
       </TextField>
-      <Label layoutX="22.0" layoutY="60.0" prefHeight="18.0" prefWidth="234.0" text="Select field" />
+      <Label fx:id="fieldListLabel" layoutX="22.0" layoutY="60.0" prefHeight="18.0" prefWidth="234.0" text="Select field" />
+      <Button fx:id="langButton" layoutX="423.0" layoutY="353.0" mnemonicParsing="false" onAction="#changeLanguage" text="BY" />
    </children>
 </AnchorPane>
