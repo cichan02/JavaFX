@@ -7,11 +7,12 @@ import java.io.IOException;
 
 import com.google.common.io.Files;
 
+import by.piskunou.university.ds.util.Translator;
 import javafx.scene.Node;
 import javafx.stage.FileChooser;
 
 public class MainService {
-	private static final String HOME_DIR = "/home/cichan/Documents/University/Discipline of Specialization (DS)/Practice/project4/src/main/resources/";
+	private static final String HOME_DIR = "/home/cichan/Documents/University/Discipline of Specialization (DS)/Practice/project4/src/main/java/by/piskunou/university/ds/models/";
 	
 	private FileChooser fileChooserBuilder(String title, String initDirectory, String extention) {
 		FileChooser fileChooser = new FileChooser();
@@ -39,5 +40,9 @@ public class MainService {
 		}
 		
 		return new String(charArray);
+	}
+	
+	public String translate(String raw) {
+		return Translator.translate(raw);
 	}
 }

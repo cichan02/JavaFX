@@ -13,7 +13,7 @@ import javafx.scene.control.TextArea;
 
 public class MainController {
 	@FXML private TextArea rawText;
-	@FXML private Button transateButton;
+	@FXML private Button translateButton;
 	@FXML private Button openButton;
 	@FXML private TextArea translatedText;
 	
@@ -22,7 +22,8 @@ public class MainController {
 
 	@FXML
 	public void translate() {
-		
+		String text = mainService.translate(rawText.getText());
+		translatedText.setText(text);
 	}
 	
 	@FXML
@@ -31,6 +32,8 @@ public class MainController {
 			String text = mainService.open(openButton);
 			
 			rawText.setText(text);
+			translatedText.setText("");
+			translateButton.setDisable(false);
 		} catch (NullPointerException e) {
 			exceptionService.nullFile();
 		} catch (IllegalArgumentException e){

@@ -7,7 +7,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.piskunou.university.ds.controllers.MainController">
    <children>
       <TextArea fx:id="rawText" editable="false" layoutX="14.0" layoutY="13.0" prefHeight="462.0" prefWidth="405.0" />
-      <Button fx:id="transateButton" layoutX="433.0" layoutY="176.0" mnemonicParsing="false" onAction="#translate" prefHeight="26.0" prefWidth="50.0" text="⤚" />
+      <Button fx:id="translateButton" disable="true" layoutX="433.0" layoutY="176.0" mnemonicParsing="false" onAction="#translate" prefHeight="26.0" prefWidth="50.0" text="⤚" />
       <Button fx:id="openButton" layoutX="433.0" layoutY="137.0" mnemonicParsing="false" onAction="#open" text="open" />
       <TextArea fx:id="translatedText" editable="false" layoutX="499.0" layoutY="13.0" prefHeight="462.0" prefWidth="406.0" />
    </children>
