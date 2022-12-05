@@ -87,7 +87,7 @@ local.properties
 *.class
 
 # Log file
-log/
+logs/
 *.log
 
 # BlueJ files
