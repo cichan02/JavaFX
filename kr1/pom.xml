@@ -104,7 +104,7 @@
     </dependencies>
 
     <build>
-        <finalName>kr</finalName>
+        <finalName>kr1</finalName>
         <plugins>
             <plugin>
                 <groupId>com.zenjava</groupId>

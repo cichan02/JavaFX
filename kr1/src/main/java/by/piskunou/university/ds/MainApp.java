@@ -12,19 +12,19 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
     private static final Logger log = LogManager.getLogger();
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         launch(args);
     }
 
     public void start(Stage stage) throws Exception {
         log.info("Starting JavaFX application");
-
+        
         String fxmlFile = "/fxml/main.fxml";
-        log.info("Loading FXML for main view from: {}", fxmlFile);
+        log.debug("Loading FXML for main view from: {}", fxmlFile);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
         Parent root = loader.load();
 
-        log.info("Showing JFX scene");
+        log.debug("Showing JFX scene");
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
