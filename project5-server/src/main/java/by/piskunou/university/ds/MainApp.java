@@ -27,7 +27,7 @@ public class MainApp extends Application {
 
         log.debug("Showing JFX scene");
         Scene scene = new Scene(root);
-
+        
         stage.setScene(scene);
         stage.show();
     }
