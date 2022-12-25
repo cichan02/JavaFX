@@ -150,3 +150,7 @@ build.fxbuild
 *.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/java,git,eclipse,linux,maven
+/demo-I/
+/demo-II/
+/demo-III/
+/demo-IV/
