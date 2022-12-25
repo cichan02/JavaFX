@@ -2,21 +2,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
+
     <groupId>by.piskunou.university.ds</groupId>
-    <artifactId>kr1</artifactId>
-    <name>kr</name>
+    <artifactId>project5-client</artifactId>
+    <name>project5-client</name>
 
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>19</maven.compiler.source>
     	<maven.compiler.target>19</maven.compiler.target>
     
         <log4j.version>2.19.0</log4j.version>
-        <javafx.version>19</javafx.version>
+        <javafx.version>19</javafx.version>		
     </properties>
 
     <dependencies>
@@ -101,9 +101,9 @@
 		    <version>31.1-jre</version>
 		</dependency>
     </dependencies>
-
+    
     <build>
-        <finalName>kr1</finalName>
+        <finalName>project5-client</finalName>
         <plugins>
             <plugin>
                 <groupId>com.zenjava</groupId>
@@ -116,7 +116,7 @@
                     <keyStorePassword>example-password</keyStorePassword>
                     <allPermissions>true</allPermissions>
                 </configuration>
- 	          </plugin>
+            </plugin>
         </plugins>
     </build>
 </project>
