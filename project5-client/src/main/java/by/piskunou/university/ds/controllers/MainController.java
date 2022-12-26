@@ -1,6 +1,11 @@
 package by.piskunou.university.ds.controllers;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -79,12 +84,32 @@ public class MainController {
 	
 	@FXML
 	public void get() {
-		try(Socket s = new Socket(HOST, 4321)) {
+		try(Socket s = new Socket(HOST, 4321);
+			BufferedInputStream bis = new BufferedInputStream(s.getInputStream());
+			DataInputStream dis = new DataInputStream(bis)) {
 			log.debug("Send 'get' command to server");
 			
 			PrintWriter pr = new PrintWriter(s.getOutputStream());
 			pr.println("get");
 			pr.flush();
+
+			int filesCount = dis.readInt();
+
+			for(int i = 0; i < filesCount; i++) {
+				long fileLength = dis.readLong();
+				String fileName = dis.readUTF();
+					
+				File file = new File("/home/cichan/Documents/University/Discipline of Specialization (DS)"
+						+ "/Practice/project5-client/src/main/resources/client/" + fileName);
+				file.createNewFile();
+				BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+				
+				for(int j = 0; j < fileLength; j++) {
+					bos.write(bis.read());
+				}
+				bos.close();
+			}
+			log.debug("Receive files");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 

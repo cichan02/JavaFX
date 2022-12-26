@@ -11,6 +11,6 @@
       <Button fx:id="lsButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#ls" text="ls" />
       <Button fx:id="cdButton" layoutX="178.0" layoutY="14.0" mnemonicParsing="false" onAction="#cd" text="cd" />
       <Button fx:id="getButton" layoutX="545.0" layoutY="14.0" mnemonicParsing="false" onAction="#get" text="get large files" />
-      <Label fx:id="currentDir" layoutX="14.0" layoutY="45.0" text="/home/cichan/Documents/University/Discipline of Specialization (DS)/Practice/project5-server/src/main/resources" />
+      <Label fx:id="currentDir" layoutX="14.0" layoutY="45.0" text="/home/cichan/Documents/University/Discipline of Specialization (DS)/Practice/project5-server/src/main/resources/server" />
    </children>
 </AnchorPane>
