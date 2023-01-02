@@ -15,6 +15,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -53,7 +55,7 @@ public class MainController {
 				fileList.getItems().add(shortname);
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			throwException();
 		} 
 	}
 	
@@ -78,7 +80,7 @@ public class MainController {
 				currentDir.setText(answer);
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			throwException();
 		} 
 	}
 	
@@ -111,7 +113,7 @@ public class MainController {
 			}
 			log.debug("Receive files");
 		} catch (IOException e) {
-			e.printStackTrace();
+			throwException();
 		} 
 	}
 	
@@ -119,4 +121,11 @@ public class MainController {
 	public void updateCurrentFile() {
 		currentFile = fileList.getSelectionModel().getSelectedItem();
 	}
+		
+	private void throwException() {
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("Server not found");
+		alert.setHeaderText("Connection lost");
+		alert.showAndWait();
+	}	
 }
